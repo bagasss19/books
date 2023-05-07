@@ -2,14 +2,20 @@ package config
 
 import (
 	"fmt"
+	"log"
 	"os"
 
+	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )
 
 func DBConnect() (*gorm.DB, error) {
+	err := godotenv.Load("secret.env")
+	if err != nil {
+		log.Println("Error loading .env file")
+	}
 	username := os.Getenv("DB_USER")
 	password := os.Getenv("DB_PASS")
 	dbName := os.Getenv("DB_DATABASE")

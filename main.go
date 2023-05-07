@@ -21,8 +21,7 @@ import (
 
 func readEnvironmentFile() {
 	//Environment file Load --------------------------------
-	err := godotenv.Load(".secret.env")
-
+	err := godotenv.Load("secret.env")
 	if err != nil {
 		log.Println("Error loading .env file")
 	}
